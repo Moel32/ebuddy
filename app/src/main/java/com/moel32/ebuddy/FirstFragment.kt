@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.moel32.ebuddy.databinding.FragmentFirstBinding
 
@@ -22,7 +24,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
@@ -32,10 +34,19 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
+        binding.answerButton.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+
+        // find the toast_button by its ID and set a click listener
+        //view.findViewById<Button>(R.id.sharing_button).setOnClickListener {
+            // create a Toast with some text, to appear for a short time
+            //val myToast = Toast.makeText(context, "Sharing Location...", Toast.LENGTH_SHORT)
+            // show the Toast
+            //myToast.show()
+        //}
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

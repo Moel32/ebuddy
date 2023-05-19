@@ -1,61 +1,91 @@
 package com.moel32.ebuddy
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
+import android.view.animation.Animation
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import com.google.android.material.animation.AnimationUtils
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    var mAddShareFab: FloatingActionButton? = null
+    var mAddLibraryFab: FloatingActionButton? = null
+    var mAddImportantFab: FloatingActionButton? = null
+
+    var mAddHomeFab: ExtendedFloatingActionButton? = null
+    var isAllFabsVisible: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        mAddHomeFab = findViewById(R.id.floatingActionButtonHome)
 
-        setSupportActionBar(binding.toolbar)
+        mAddShareFab = findViewById(R.id.floatingActionButtonShare)
+        mAddLibraryFab = findViewById(R.id.floatingActionButtonLibrary)
+        mAddImportantFab = findViewById(R.id.floatingActionButtonImportant)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        mAddShareFab.setVisibility(View.GONE)
+        mAddLibraryFab.setVisibility(View.GONE)
+        mAddImportantFab.setVisibility(View.GONE)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAnchorView(R.id.fab)
-                .setAction("Action", null).show()
-        }
-    }
+        isAllFabsVisible = false
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
+        mAddHomeFab.shrink()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+        mAddHomeFab.setOnClickListener(
+            object : View.OnClickListener() {
+                override fun onClick(view: View?) {
+                    isAllFabsVisible = if (!isAllFabsVisible!!) {
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+                        mAddShareFab.show()
+                        mAddLibraryFab.show()
+                        mAddImportantFab.show()
+
+                        mAddHomeFab.extend()
+
+                        true
+                    } else {
+
+                        mAddShareFab.hide()
+                        mAddLibraryFab.hide()
+                        mAddImportantFab.hide()
+
+                        mAddHomeFab.shrink()
+
+                        false
+                    }
+                }
+            })
+
+        mAddLibraryFab.setOnClickListener(
+            object : View.OnClickListener() {
+                override fun onClick(view: View?) {
+                    Toast.makeText(this@MainActivity, "Library Added", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+        mAddShareFab.setOnClickListener(
+            object : View.OnClickListener() {
+                override fun onClick(view: View?) {
+                    Toast.makeText(this@MainActivity, "Location Added", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+        mAddImportantFab.setOnClickListener(
+            object : View.OnClickListener() {
+                override fun onClick(view: View?) {
+                    Toast.makeText(this@MainActivity, "Important Added", Toast.LENGTH_SHORT).show()
+                }
+            })
     }
 }
