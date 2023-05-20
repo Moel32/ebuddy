@@ -16,19 +16,19 @@ import com.moel32.ebuddy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    var mAddShareFab: FloatingActionButton? = null
+    /*var mAddShareFab: FloatingActionButton? = null
     var mAddLibraryFab: FloatingActionButton? = null
     var mAddImportantFab: FloatingActionButton? = null
 
     var mAddHomeFab: ExtendedFloatingActionButton? = null
-    var isAllFabsVisible: Boolean? = null
+    var isAllFabsVisible: Boolean? = null*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mAddHomeFab = findViewById(R.id.floatingActionButtonHome)
+        /*mAddHomeFab = findViewById(R.id.floatingActionButtonHome)
 
         mAddShareFab = findViewById(R.id.floatingActionButtonShare)
         mAddLibraryFab = findViewById(R.id.floatingActionButtonLibrary)
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         mAddHomeFab.shrink()
 
         mAddHomeFab.setOnClickListener(
-            object : View.OnClickListener() {
+         object : View.OnClickListener() {
                 override fun onClick(view: View?) {
                     isAllFabsVisible = if (!isAllFabsVisible!!) {
 
@@ -87,5 +87,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Important Added", Toast.LENGTH_SHORT).show()
                 }
             })
+    }*/
     }
 }
