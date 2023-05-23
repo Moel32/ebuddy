@@ -18,6 +18,6 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.moel32.ebuddy.SecondFragment"
-        android:label="@string/contacts_fragment_label"
+        android:label="@string/chat_fragment_label"
         tools:layout="@layout/fragment_second"/>
 </navigation>

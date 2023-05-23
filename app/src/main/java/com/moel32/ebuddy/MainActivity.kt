@@ -1,92 +1,46 @@
+@file:Suppress("DEPRECATION")
+
 package com.moel32.ebuddy
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
-import android.view.animation.Animation
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import com.google.android.material.animation.AnimationUtils
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.fragment.app.Fragment
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    /*var mAddShareFab: FloatingActionButton? = null
-    var mAddLibraryFab: FloatingActionButton? = null
-    var mAddImportantFab: FloatingActionButton? = null
-
-    var mAddHomeFab: ExtendedFloatingActionButton? = null
-    var isAllFabsVisible: Boolean? = null*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            handleBottomNavigation(
+                it.itemId
+            )
+        }
+        binding.bottomNavigationView.selectedItemId = R.id.floatingActionButtonHome
+    }
 
-        /*mAddHomeFab = findViewById(R.id.floatingActionButtonHome)
+    private fun handleBottomNavigation(
+        menuItemId: Int
+    ): Boolean = when(menuItemId) {
+        R.id.floatingActionButtonMessage ->{
+            swapFragments(SecondFragment())
+            true
+        }
+        R.id.floatingActionButtonShare -> {
+            swapFragments(ThirdFragment())
+            true
+        }
+        R.id.floatingActionButtonLibrary -> {
+            swapFragments(FourthFragment())
+            true
+        }
+        else -> false
+    }
 
-        mAddShareFab = findViewById(R.id.floatingActionButtonShare)
-        mAddLibraryFab = findViewById(R.id.floatingActionButtonLibrary)
-        mAddImportantFab = findViewById(R.id.floatingActionButtonImportant)
-
-        mAddShareFab.setVisibility(View.GONE)
-        mAddLibraryFab.setVisibility(View.GONE)
-        mAddImportantFab.setVisibility(View.GONE)
-
-        isAllFabsVisible = false
-
-        mAddHomeFab.shrink()
-
-        mAddHomeFab.setOnClickListener(
-         object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    isAllFabsVisible = if (!isAllFabsVisible!!) {
-
-                        mAddShareFab.show()
-                        mAddLibraryFab.show()
-                        mAddImportantFab.show()
-
-                        mAddHomeFab.extend()
-
-                        true
-                    } else {
-
-                        mAddShareFab.hide()
-                        mAddLibraryFab.hide()
-                        mAddImportantFab.hide()
-
-                        mAddHomeFab.shrink()
-
-                        false
-                    }
-                }
-            })
-
-        mAddLibraryFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    Toast.makeText(this@MainActivity, "Library Added", Toast.LENGTH_SHORT).show()
-                }
-            })
-
-        mAddShareFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    Toast.makeText(this@MainActivity, "Location Added", Toast.LENGTH_SHORT).show()
-                }
-            })
-
-        mAddImportantFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    Toast.makeText(this@MainActivity, "Important Added", Toast.LENGTH_SHORT).show()
-                }
-            })
-    }*/
+    private fun swapFragments(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.FirstFragment, fragment)
+            .commit()
     }
 }

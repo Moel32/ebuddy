@@ -13,7 +13,7 @@ import com.moel32.ebuddy.databinding.FragmentFirstBinding
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(R.layout.fragment_first) {
 
     private var _binding: FragmentFirstBinding? = null
 
