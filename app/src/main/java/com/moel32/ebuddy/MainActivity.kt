@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun swapFragments(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.FirstFragment, fragment)
+            .replace(R.id.firstFragment, fragment)
             .commit()
     }
 }
