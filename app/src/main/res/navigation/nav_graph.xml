@@ -8,15 +8,15 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.moel32.ebuddy.HomeFragment"
-        android:label="@string/home_fragment_label"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/ChatFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/ChatFragment"
         android:name="com.moel32.ebuddy.ChatFragment"
         android:label="@string/chat_fragment_label"
         tools:layout="@layout/fragment_chat"/>
