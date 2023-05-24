@@ -5,18 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moel32.ebuddy.databinding.FragmentThirdBinding
+import com.moel32.ebuddy.databinding.FragmentMapBinding
 
 
 class MapFragment : Fragment() {
-    private lateinit var binding: FragmentThirdBinding
+    private lateinit var binding: FragmentMapBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentThirdBinding.inflate(layoutInflater)
+        binding = FragmentMapBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -27,7 +27,6 @@ class MapFragment : Fragment() {
     }
 
     private fun setupData() {
-        binding.thirdFragment.text = getString(R.string.this_is_for_the_map_fragment)
     }
 
 }

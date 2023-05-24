@@ -5,17 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moel32.ebuddy.databinding.FragmentFourthBinding
+import com.moel32.ebuddy.databinding.FragmentSymptomsBinding
 
 class SymptomsFragment : Fragment() {
-    private lateinit var binding: FragmentFourthBinding
+    private lateinit var binding: FragmentSymptomsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFourthBinding.inflate(layoutInflater)
+        binding = FragmentSymptomsBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -26,7 +26,6 @@ class SymptomsFragment : Fragment() {
     }
 
     private fun setupData() {
-        binding.fourthFragment.text = getString(R.string.this_fragment_would_contain_the_symptoms)
     }
 
 
