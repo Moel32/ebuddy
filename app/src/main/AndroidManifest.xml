@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ebuddy"
         tools:targetApi="31">
-
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -33,7 +32,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="EBuddy"
             android:theme="@style/Theme.Ebuddy">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,91 +1,59 @@
 package com.moel32.ebuddy
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
-import android.view.animation.Animation
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import com.google.android.material.animation.AnimationUtils
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import com.google.android.material.navigation.NavigationView
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    var mAddShareFab: FloatingActionButton? = null
-    var mAddLibraryFab: FloatingActionButton? = null
-    var mAddImportantFab: FloatingActionButton? = null
-
-    var mAddHomeFab: ExtendedFloatingActionButton? = null
-    var isAllFabsVisible: Boolean? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        mAddHomeFab = findViewById(R.id.floatingActionButtonHome)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        mAddShareFab = findViewById(R.id.floatingActionButtonShare)
-        mAddLibraryFab = findViewById(R.id.floatingActionButtonLibrary)
-        mAddImportantFab = findViewById(R.id.floatingActionButtonImportant)
+        setupClickListener()
+        loadFragment(HomeFragment())
+    }
 
-        mAddShareFab.setVisibility(View.GONE)
-        mAddLibraryFab.setVisibility(View.GONE)
-        mAddImportantFab.setVisibility(View.GONE)
+    private fun setupClickListener() {
+        binding.bottomNavigationView.setOnItemSelectedListener {
 
-        isAllFabsVisible = false
-
-        mAddHomeFab.shrink()
-
-        mAddHomeFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    isAllFabsVisible = if (!isAllFabsVisible!!) {
-
-                        mAddShareFab.show()
-                        mAddLibraryFab.show()
-                        mAddImportantFab.show()
-
-                        mAddHomeFab.extend()
-
-                        true
-                    } else {
-
-                        mAddShareFab.hide()
-                        mAddLibraryFab.hide()
-                        mAddImportantFab.hide()
-
-                        mAddHomeFab.shrink()
-
-                        false
-                    }
+            val fragment = when (it.itemId) {
+                R.id.floatingActionButtonMessage -> {
+                    removeBadge(it.itemId)
+                    ChatFragment()
                 }
-            })
-
-        mAddLibraryFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    Toast.makeText(this@MainActivity, "Library Added", Toast.LENGTH_SHORT).show()
+                R.id.floatingActionButtonShare -> {
+                    MapFragment()
                 }
-            })
-
-        mAddShareFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    Toast.makeText(this@MainActivity, "Location Added", Toast.LENGTH_SHORT).show()
+                else -> {
+                    HomeFragment()
                 }
-            })
+            }
+            loadFragment(fragment)
+            true
+        }
+    }
 
-        mAddImportantFab.setOnClickListener(
-            object : View.OnClickListener() {
-                override fun onClick(view: View?) {
-                    Toast.makeText(this@MainActivity, "Important Added", Toast.LENGTH_SHORT).show()
-                }
-            })
+    private fun removeBadge(badgeId: Int) {
+        binding.bottomNavigationView.getBadge(badgeId)?.let { badgeDrawable ->
+            if (badgeDrawable.isVisible) {
+                binding.bottomNavigationView.removeBadge(badgeId)
+            }
+        }
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.drawer_layout, fragment)
+            .commit()
     }
 }

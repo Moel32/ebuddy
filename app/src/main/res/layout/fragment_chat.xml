@@ -5,7 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    tools:context=".ChatFragment">
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:text="@string/chat_bot"
+      android:gravity="center"
+      android:textSize="30sp"
+      android:textColor="@color/lavender"/>
+
  <com.github.bassaer.chatmessageview.view.ChatView
      android:id="@+id/my_chat_view"
      android:layout_width="match_parent"
