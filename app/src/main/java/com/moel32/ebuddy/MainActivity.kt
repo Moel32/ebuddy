@@ -2,7 +2,10 @@ package com.moel32.ebuddy
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import com.google.android.material.navigation.NavigationView
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,15 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupClickListener()
-        loadFragment(FirstFragment())
-    }
-
-    private fun setupBottomNavigationView() {
-        setupClickListener()
-        binding.bottomNavigationView.getOrCreateBadge(R.id.floatingActionButtonMessage)
-        binding.bottomNavigationView.getBadge(R.id.floatingActionButtonMessage)?.apply {
-            number = 0
-        }
+        loadFragment(HomeFragment())
     }
 
     private fun setupClickListener() {
@@ -33,19 +28,13 @@ class MainActivity : AppCompatActivity() {
             val fragment = when (it.itemId) {
                 R.id.floatingActionButtonMessage -> {
                     removeBadge(it.itemId)
-                    SecondFragment()
+                    ChatFragment()
                 }
                 R.id.floatingActionButtonShare -> {
-                    ThirdFragment()
-                }
-                R.id.floatingActionButtonLibrary -> {
-                    FourthFragment()
-                }
-                R.id.Settings -> {
-                    FifthFragment()
+                    MapFragment()
                 }
                 else -> {
-                    FirstFragment()
+                    HomeFragment()
                 }
             }
             loadFragment(fragment)
@@ -64,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, fragment)
+            .replace(R.id.drawer_layout, fragment)
             .commit()
     }
 }

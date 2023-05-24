@@ -5,21 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moel32.ebuddy.databinding.FragmentFirstBinding
+import com.moel32.ebuddy.databinding.FragmentFourthBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
-
-    private lateinit var binding: FragmentFirstBinding
+class SymptomsFragment : Fragment() {
+    private lateinit var binding: FragmentFourthBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFirstBinding.inflate(layoutInflater)
+        binding = FragmentFourthBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -30,6 +26,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun setupData() {
-        binding.healthCheck.text = getString(R.string.what_are_your_current_symptoms)
+        binding.fourthFragment.text = getString(R.string.this_fragment_would_contain_the_symptoms)
     }
+
+
 }

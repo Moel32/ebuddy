@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.moel32.ebuddy.databinding.FragmentFirstBinding
-import com.moel32.ebuddy.databinding.FragmentThirdBinding
 
+/**
+ * A simple [Fragment] subclass as the default destination in the navigation.
+ */
+class HomeFragment : Fragment() {
 
-class ThirdFragment : Fragment() {
-    private lateinit var binding: FragmentThirdBinding
+    private lateinit var binding: FragmentFirstBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentThirdBinding.inflate(layoutInflater)
+        binding = FragmentFirstBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -28,7 +30,6 @@ class ThirdFragment : Fragment() {
     }
 
     private fun setupData() {
-        binding.thirdFragment.text = getString(R.string.this_is_for_the_map_fragment)
+        binding.healthCheck.text = getString(R.string.what_are_your_current_symptoms)
     }
-
 }
