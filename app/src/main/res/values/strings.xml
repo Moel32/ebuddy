@@ -12,5 +12,6 @@
     <string name="this_is_for_the_map_fragment">This is for the MAP Fragment</string>
     <string name="this_is_the_settings_fragment">This is the Settings Fragment</string>
     <string name="home_fragment_label">Home</string>
-    <string name="chat_fragment_label">Chat\n</string>
+    <string name="chat_fragment_label">Chat</string>
+    <string name="chat_bot">This is for chat bot</string>
 </resources>
