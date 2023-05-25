@@ -10,14 +10,22 @@
         android:name="com.moel32.ebuddy.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/ChatFragment" />
+            android:id="@+id/action_FirstFragment_to_symptomsFragment"
+            app:destination="@id/symptomsFragment" />
     </fragment>
     <fragment
         android:id="@+id/ChatFragment"
         android:name="com.moel32.ebuddy.ChatFragment"
         android:label="@string/chat_fragment_label"
         tools:layout="@layout/fragment_chat"/>
+    <fragment
+        android:id="@+id/symptomsFragment"
+        android:name="com.moel32.ebuddy.SymptomsFragment"
+        android:label="fragment_symptoms"
+        tools:layout="@layout/fragment_symptoms" >
+        <action
+            android:id="@+id/action_symptomsFragment_to_ChatFragment"
+            app:destination="@id/ChatFragment" />
+    </fragment>
 </navigation>

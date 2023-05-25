@@ -28,6 +28,4 @@ class SettingsFragment : Fragment() {
 
     private fun setupData() {
     }
-
-
 }

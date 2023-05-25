@@ -11,6 +11,11 @@
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/floatingActionButtonSymptoms"
+        android:icon="@drawable/float_library"
+        android:title="Symptoms"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/floatingActionButtonMessage"
         android:icon="@drawable/float_message"
         android:title="Chat"
@@ -19,5 +24,5 @@
         android:id="@+id/floatingActionButtonShare"
         android:icon="@drawable/float_emergency_share"
         android:title="GPS"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>

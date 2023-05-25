@@ -26,8 +26,10 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
 
             val fragment = when (it.itemId) {
+                R.id.floatingActionButtonSymptoms -> {
+                    SymptomsFragment()
+                }
                 R.id.floatingActionButtonMessage -> {
-                    removeBadge(it.itemId)
                     ChatFragment()
                 }
                 R.id.floatingActionButtonShare -> {
