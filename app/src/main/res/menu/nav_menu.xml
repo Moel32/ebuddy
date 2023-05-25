@@ -9,12 +9,12 @@
 
         <item
             android:id="@+id/nav_library"
-            android:icon="@drawable/float_library"
+            android:icon="@drawable/ic_library"
             android:title="@string/library"/>
 
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/float_settings"
+            android:icon="@drawable/ic_settings"
             android:title="@string/settings"/>
 
         <item

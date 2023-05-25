@@ -1,59 +1,76 @@
 package com.moel32.ebuddy
 
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()/*, NavigationView.OnNavigationItemSelectedListener*/ {
 
-    private lateinit var binding: ActivityMainBinding
+   // lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+     /*   navController = Navigation.findNavController(this@MainActivity,
+            R.id.mobile_navigation
+        )
+        setSupportActionBar(toolbar)
+        val toggle = object : ActionBarDrawerToggle(
+            this, drawer_layout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        ) {}
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+        setupNavigationDrawer()
+        nav_view.setNavigationItemSelectedListener(this)
 
-        setupClickListener()
-        loadFragment(HomeFragment())
     }
 
-    private fun setupClickListener() {
-        binding.bottomNavigationView.setOnItemSelectedListener {
+    private fun setupNavigationDrawer() {
+        val appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
+        setupWithNavController(toolbar, navController, appBarConfiguration)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+    }
 
-            val fragment = when (it.itemId) {
-                R.id.floatingActionButtonMessage -> {
-                    removeBadge(it.itemId)
-                    ChatFragment()
-                }
-                R.id.floatingActionButtonShare -> {
-                    MapFragment()
-                }
-                else -> {
-                    HomeFragment()
-                }
+    override fun onSupportNavigateUp(): Boolean {
+        return Navigation.findNavController(this,
+            R.id.my_nav_host_fragment
+        ).navigateUp() || super.onSupportNavigateUp()
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_profile -> {
+                navController.navigate(R.id.action_homeFragment_to_profileFragment)
             }
-            loadFragment(fragment)
-            true
-        }
-    }
-
-    private fun removeBadge(badgeId: Int) {
-        binding.bottomNavigationView.getBadge(badgeId)?.let { badgeDrawable ->
-            if (badgeDrawable.isVisible) {
-                binding.bottomNavigationView.removeBadge(badgeId)
+            R.id.nav_settings -> {
+                navController.navigate(R.id.action_homeFragment_to_settingFragment2)
             }
         }
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.drawer_layout, fragment)
-            .commit()
+
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }*/
     }
 }
