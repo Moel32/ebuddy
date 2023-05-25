@@ -22,10 +22,10 @@
     <string-array name="symptoms">
         <item>Chest pain</item>
         <item>Fatigue</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
+        <item>Head ache</item>
+        <item>Cough</item>
+        <item>Fever</item>
+        <item>Stomach ache</item>
         <item>Loss of taste or smell</item>
         <item>Sinus pain from congestion</item>
         <item>Thirst</item>
