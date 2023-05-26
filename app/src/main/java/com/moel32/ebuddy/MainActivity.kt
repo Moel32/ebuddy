@@ -2,75 +2,49 @@ package com.moel32.ebuddy
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.fragment.app.Fragment
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.google.android.material.navigation.NavigationView
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity()/*, NavigationView.OnNavigationItemSelectedListener*/ {
+class MainActivity : AppCompatActivity() {
 
-   // lateinit var navController: NavController
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-     /*   navController = Navigation.findNavController(this@MainActivity,
-            R.id.mobile_navigation
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        navController = findNavController(R.id.nav_host_fragment)
+        //bottom nav
+        binding.bottomNavView.setupWithNavController(navController)
+        //drawer
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.navigation_symptoms, R.id.nav_library, R.id.nav_settings, R.id.nav_share, R.id.nav_about, R.id.nav_logout),
+            binding.drawerLayout
         )
-        setSupportActionBar(toolbar)
-        val toggle = object : ActionBarDrawerToggle(
-            this, drawer_layout,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        ) {}
+        //menu item click handle
+        binding.navigationView.setupWithNavController(navController)
 
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        setupNavigationDrawer()
-        nav_view.setNavigationItemSelectedListener(this)
-
+        //
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    private fun setupNavigationDrawer() {
-        val appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
-        setupWithNavController(toolbar, navController, appBarConfiguration)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+    //bottom nav
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(navController) ||
+                super.onOptionsItemSelected(item)
     }
 
+    //open drawer when drawer icon clicked and back btn press
     override fun onSupportNavigateUp(): Boolean {
-        return Navigation.findNavController(this,
-            R.id.my_nav_host_fragment
-        ).navigateUp() || super.onSupportNavigateUp()
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_profile -> {
-                navController.navigate(R.id.action_homeFragment_to_profileFragment)
-            }
-            R.id.nav_settings -> {
-                navController.navigate(R.id.action_homeFragment_to_settingFragment2)
-            }
-        }
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
-    }
-
-
-    override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }*/
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
     }
 }

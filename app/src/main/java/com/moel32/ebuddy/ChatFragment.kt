@@ -29,7 +29,7 @@ class ChatFragment : Fragment() {
         //setupData()
     }
 
-   /* private fun setupData() {
-        binding.myChatView.com = getString(R.string.chat_bot)
-    }*/
+    /* private fun setupData() {
+         binding.myChatView.com = getString(R.string.chat_bot)
+     }*/
 }
