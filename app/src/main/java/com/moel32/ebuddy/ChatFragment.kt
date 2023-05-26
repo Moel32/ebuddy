@@ -32,5 +32,4 @@ class ChatFragment : Fragment() {
    /* private fun setupData() {
         binding.myChatView.com = getString(R.string.chat_bot)
     }*/
-
 }
