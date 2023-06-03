@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SymptomsFragment"
-    android:orientation="vertical">
-
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="wrap_content"
-            android:layout_height="398dp">
-
-        </ListView>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Validate" />
+    android:padding="16dp">
 
         <TextView
-            android:id="@+id/textViewSickness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please enter your symptoms here : "
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/symptom_input"
             android:layout_width="match_parent"
-            android:layout_height="94dp"
-            android:gravity="center" />
+            android:layout_height="wrap_content"
+            android:hint="e.g. headache, fever, cough, chest Pain, stomach ache"
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/check_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recherche"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:layout_marginTop="16dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/illness_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"/>
+
+        </ScrollView>
 
 </LinearLayout>

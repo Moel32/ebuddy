@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.floatingActionButtonSymptoms -> {
                     SymptomsFragment()
                 }
-                R.id.floatingActionButtonMessage -> {
-                    ChatFragment()
-                }
                 R.id.floatingActionButtonShare -> {
                     MapFragment()
                 }

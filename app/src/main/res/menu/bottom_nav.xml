@@ -16,11 +16,6 @@
         android:title="Symptoms"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/floatingActionButtonMessage"
-        android:icon="@drawable/float_message"
-        android:title="Chat"
-        app:showAsAction="ifRoom"/>
-    <item
         android:id="@+id/floatingActionButtonShare"
         android:icon="@drawable/float_emergency_share"
         android:title="GPS"
