@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupClickListener() {
-        binding.bottomNavigationView.setOnItemSelectedListener {
+        binding.bottomNavView.setOnItemSelectedListener {
 
             val fragment = when (it.itemId) {
                 R.id.floatingActionButtonSymptoms -> {
@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun removeBadge(badgeId: Int) {
-        binding.bottomNavigationView.getBadge(badgeId)?.let { badgeDrawable ->
+        binding.bottomNavView.getBadge(badgeId)?.let { badgeDrawable ->
             if (badgeDrawable.isVisible) {
-                binding.bottomNavigationView.removeBadge(badgeId)
+                binding.bottomNavView.removeBadge(badgeId)
             }
         }
     }

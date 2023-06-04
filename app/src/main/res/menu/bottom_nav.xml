@@ -7,17 +7,17 @@
 
     <item
         android:id="@+id/floatingActionButtonHome"
-        android:icon="@drawable/float_home"
+        android:icon="@drawable/ic_home"
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/floatingActionButtonSymptoms"
-        android:icon="@drawable/float_library"
+        android:icon="@drawable/nav_symptoms"
         android:title="Symptoms"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/floatingActionButtonShare"
-        android:icon="@drawable/float_emergency_share"
+        android:icon="@drawable/ic_location"
         android:title="GPS"
         app:showAsAction="ifRoom" />
 </menu>
