@@ -1,56 +1,74 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-        <data />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select your symptoms:" />
 
-        <LinearLayout
+        <Spinner
+            android:id="@+id/symptom_spinner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".SymptomsFragment">
+            android:layout_height="wrap_content" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/symptomEditText"
-                    android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your age:" />
+
+        <EditText
+            android:id="@+id/age_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select your sex:" />
+
+        <RadioGroup
+            android:id="@+id/sex_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male_radio_button"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Enter symptoms"
-                    android:inputType="textAutoComplete|textCapWords"
-                    android:maxLines="1" />
+                    android:text="Male" />
 
-                <EditText
-                    android:id="@+id/ageEditText"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/female_radio_button"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Enter age"
-                    android:inputType="number"
-                    android:maxLines="1" />
+                    android:text="Female" />
 
-                <EditText
-                    android:id="@+id/sexEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter sex"
-                    android:inputType="text"
-                    android:maxLines="1" />
+        </RadioGroup>
 
-                <Button
-                    android:id="@+id/checkButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Check Symptoms" />
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
 
-                <Button
-                    android:id="@+id/resetButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reset" />
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset" />
 
-                <TextView
-                    android:id="@+id/resultTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:textSize="18sp" />
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
 
-        </LinearLayout>
-</layout>
+</LinearLayout>

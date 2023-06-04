@@ -18,7 +18,7 @@ import kotlinx.serialization.json.Json
 class SymptomChecker {
 
     private val baseUrl = "https://sandbox-healthservice.priaid.ch"
-    private var apiKey = ""
+    private var apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImthbWVyZ2VuaWVAZ21haWwuY29tIiwicm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxMjQyNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdmVyc2lvbiI6IjIwMCIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGltaXQiOiI5OTk5OTk5OTkiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXAiOiJQcmVtaXVtIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9sYW5ndWFnZSI6ImVuLWdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9leHBpcmF0aW9uIjoiMjA5OS0xMi0zMSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcHN0YXJ0IjoiMjAyMy0wNi0wNCIsImlzcyI6Imh0dHBzOi8vc2FuZGJveC1hdXRoc2VydmljZS5wcmlhaWQuY2giLCJhdWQiOiJodHRwczovL2hlYWx0aHNlcnZpY2UucHJpYWlkLmNoIiwiZXhwIjoxNjg1OTE4ODIwLCJuYmYiOjE2ODU5MTE2MjB9.zwQjbApj6wfcxEquHlWlZ6gA9AvbP54DAFtkvVaLZgY"
     private val language = "en-gb"
     private val format = "json"
 
@@ -26,22 +26,13 @@ class SymptomChecker {
     /**
      * Performs a symptom check using the Apimedic API.
      *
-     * @param symptoms A list of symptom names to check.
+     * @param symptomIds A list of symptom ids to check.
      * @param age The age of the patient in years.
      * @param sex The sex of the patient ("male" or "female").
      * @return A [Result] object containing either a [SymptomCheckResult] object or a [FuelError] object.
      */
-    fun checkSymptoms(symptoms: List<String>, age: Int?, sex: String?): Result<SymptomCheckResult, FuelError> {
-        apiKey = getToken("kamergenie@gmail.com", "W>U%i9N.mtdWH&\$").get()
-        val symptomIds = fetchSymptomIds(symptoms)
-        val url = "$baseUrl/diagnosis?&language=$language&symptoms=${symptomIds.joinToString(",")}&token=$apiKey"
-        val params = mutableListOf<Pair<String, String>>()
-        if (age != null) {
-            params.add("age" to age.toString())
-        }
-        if (sex != null) {
-            params.add("gender" to sex)
-        }
+    fun checkSymptoms(symptomIds: List<Int>, year_of_birth: Int?, gender: String?): Result<SymptomCheckResult, FuelError> {
+        val url = "$baseUrl/diagnosis?language=$language&gender=$gender&year_of_birth=$year_of_birth&symptoms=[${symptomIds.joinToString(",")}]&token=$apiKey"
         val (_, _, result) = url
             .httpGet()
             .responseString()
