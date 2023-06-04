@@ -6,23 +6,18 @@
     tools:ignore="HardcodedText">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/floatingActionButtonHome"
         android:icon="@drawable/ic_home"
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/navigation_chat"
-        android:icon="@drawable/ic_chat"
-        android:title="Chat"
+        android:id="@+id/floatingActionButtonSymptoms"
+        android:icon="@drawable/nav_symptoms"
+        android:title="Symptoms"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/navigation_location"
+        android:id="@+id/floatingActionButtonShare"
         android:icon="@drawable/ic_location"
-        android:title="Map"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/navigation_account"
-        android:icon="@drawable/ic_account"
-        android:title="Account"
-        app:showAsAction="always" />
+        android:title="GPS"
+        app:showAsAction="ifRoom" />
 </menu>

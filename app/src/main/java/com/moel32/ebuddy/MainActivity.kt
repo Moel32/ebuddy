@@ -1,50 +1,58 @@
 package com.moel32.ebuddy
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.moel32.ebuddy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        navController = findNavController(R.id.nav_host_fragment)
-        //bottom nav
-        binding.bottomNavView.setupWithNavController(navController)
-        //drawer
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_symptoms, R.id.nav_settings, R.id.nav_share, R.id.nav_about, R.id.nav_logout),
-            binding.drawerLayout
-        )
-        //menu item click handle
-        binding.navigationView.setupWithNavController(navController)
 
-        //
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupClickListener()
+        loadFragment(HomeFragment())
     }
 
-    //bottom nav
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return item.onNavDestinationSelected(navController) ||
-                super.onOptionsItemSelected(item)
+    private fun setupClickListener() {
+        binding.bottomNavView.setOnItemSelectedListener {
+
+            val fragment = when (it.itemId) {
+                R.id.floatingActionButtonSymptoms -> {
+                    SymptomsFragment()
+                }
+                R.id.floatingActionButtonShare -> {
+                    MapFragment()
+                }
+                else -> {
+                    HomeFragment()
+                }
+            }
+            loadFragment(fragment)
+            true
+        }
     }
 
-    //open drawer when drawer icon clicked and back btn press
-    override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
+    private fun removeBadge(badgeId: Int) {
+        binding.bottomNavView.getBadge(badgeId)?.let { badgeDrawable ->
+            if (badgeDrawable.isVisible) {
+                binding.bottomNavView.removeBadge(badgeId)
+            }
+        }
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.drawer_layout, fragment)
+            .commit()
     }
 }
