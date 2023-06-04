@@ -5,9 +5,9 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
     <fragment
-        android:id="@+id/nav_library"
+        android:id="@+id/navigation_symptoms"
         android:name="com.moel32.ebuddy.MapFragment"
-        android:label="@string/map"
+        android:label="@string/symptoms"
         tools:layout="@layout/fragment_map" >
         <action
             android:id="@+id/action_nav_library_to_nav_settings"

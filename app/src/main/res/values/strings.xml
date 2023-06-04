@@ -20,6 +20,12 @@
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="validate">Validate</string>
+    <string name="logo">Logo\n</string>
+    <string name="salutation">Hello MJ,</string>
+    <string name="welcome_message">Welcome to EBuddy. I can help you know more about your health.</string>
+    <string name="start_symptom_assessment">Start</string>
+    <string name="featured_title">Featured</string>
+    <string name="read_our_featured_articles">Read Our Featured Articles</string>
 
     <string-array name="symptoms">
         <item>Chest pain</item>

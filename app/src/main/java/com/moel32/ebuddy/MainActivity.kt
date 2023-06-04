@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setupWithNavController(navController)
         //drawer
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_symptoms, R.id.nav_library, R.id.nav_settings, R.id.nav_share, R.id.nav_about, R.id.nav_logout),
+            setOf(R.id.navigation_symptoms, R.id.nav_settings, R.id.nav_share, R.id.nav_about, R.id.nav_logout),
             binding.drawerLayout
         )
         //menu item click handle
