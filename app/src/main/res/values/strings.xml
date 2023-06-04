@@ -3,7 +3,7 @@
     <!-- Strings used for fragments for navigation -->
 
     <string name="lorem_ipsum">Welcome to E BUddy</string>
-    <string name="what_are_your_current_symptoms">What are your current symptoms?</string>
+    <string name="symptoms">Symptoms</string>
     <string name="answer">Answer</string>
     <string name="this_fragment_would_contain_the_symptoms">This fragment would contain the symptoms</string>
     <string name="map">Map</string>
@@ -18,6 +18,8 @@
     <string name="share">Share</string>
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
+    <string name="account">Account</string>
+    <string name="validate">Validate</string>
 
     <string-array name="symptoms">
         <item>Chest pain</item>
