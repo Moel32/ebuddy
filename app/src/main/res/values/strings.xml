@@ -21,6 +21,11 @@
     <string name="account">Account</string>
     <string name="validate">Validate</string>
 
+    <string-array name="gender_options">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+
     <string-array name="symptoms">
         <item>Chest pain</item>
         <item>Fatigue</item>

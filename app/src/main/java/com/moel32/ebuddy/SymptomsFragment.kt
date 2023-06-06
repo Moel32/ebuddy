@@ -1,5 +1,6 @@
 package com.moel32.ebuddy
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,10 +37,6 @@ class SymptomsFragment : Fragment() {
     // Define the binding and UI elements.
     private lateinit var binding: FragmentSymptomsBinding
     private lateinit var symptomSpinner: Spinner
-    private lateinit var ageEditText: EditText
-    private lateinit var sexRadioGroup: RadioGroup
-    private lateinit var maleRadioButton: RadioButton
-    private lateinit var femaleRadioButton: RadioButton
     private lateinit var searchButton: Button
     private lateinit var resetButton: Button
     private lateinit var resultView: TextView
@@ -55,10 +52,6 @@ class SymptomsFragment : Fragment() {
 
         // Initialize the UI elements.
         symptomSpinner = binding.symptomSpinner
-        ageEditText = binding.ageEditText
-        sexRadioGroup = binding.sexRadioGroup
-        maleRadioButton = binding.maleRadioButton
-        femaleRadioButton = binding.femaleRadioButton
         searchButton = binding.searchButton
         resetButton = binding.resetButton
         resultView = binding.resultTextView
@@ -80,19 +73,13 @@ class SymptomsFragment : Fragment() {
 
         searchButton.setOnClickListener {
 
-            // Get the age and sex inputs.
-            val age = ageEditText.text.toString().toIntOrNull()
-            val sex = when (sexRadioGroup.checkedRadioButtonId) {
-                R.id.male_radio_button -> "male"
-                R.id.female_radio_button -> "female"
-                else -> null
-            }
-
             if (symptomIds.isNotEmpty()) {
                 binding.resultTextView.text = "Checking symptoms..."
                 CoroutineScope(Dispatchers.IO).launch {
                     val selectedIds = symptomIds.toList();
-                    val result = checker.checkSymptoms(selectedIds, age, sex)
+                    // Retrieve a SharedPreferences instance
+                    val sharedPrefs = requireContext().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+                    val result = checker.checkSymptoms(selectedIds, sharedPrefs.getInt("year", 2001), sharedPrefs.getString("gender", "male"))
                     withContext(Dispatchers.Main) {
                         when (result) {
                             is Result.Success -> {
@@ -124,8 +111,6 @@ class SymptomsFragment : Fragment() {
             // Clear the symptom IDs and reset the UI.
             symptomIds.clear()
             symptomSpinner.setSelection(0)
-            ageEditText.setText("")
-            sexRadioGroup.clearCheck()
         }
 
         return binding.root

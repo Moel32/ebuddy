@@ -5,11 +5,47 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/home"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/lavender"/>
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Gender" />
+
+        <Spinner
+            android:id="@+id/gender_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:entries="@array/gender_options" />
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Year of Birth" />
+
+        <EditText
+            android:id="@+id/year_picker"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/home"
+            android:textColor="@color/lavender"
+            android:textSize="30sp" />
+    </LinearLayout>
+
 </FrameLayout>
