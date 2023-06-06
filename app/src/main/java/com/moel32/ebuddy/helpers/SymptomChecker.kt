@@ -7,6 +7,12 @@ import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
 import com.github.kittinunf.result.map
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import com.squareup.moshi.JsonClass
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -18,28 +24,40 @@ import kotlinx.serialization.json.Json
 class SymptomChecker {
 
     private val baseUrl = "https://sandbox-healthservice.priaid.ch"
-    private var apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImthbWVyZ2VuaWVAZ21haWwuY29tIiwicm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxMjQyNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdmVyc2lvbiI6IjIwMCIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGltaXQiOiI5OTk5OTk5OTkiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXAiOiJQcmVtaXVtIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9sYW5ndWFnZSI6ImVuLWdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9leHBpcmF0aW9uIjoiMjA5OS0xMi0zMSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcHN0YXJ0IjoiMjAyMy0wNi0wNCIsImlzcyI6Imh0dHBzOi8vc2FuZGJveC1hdXRoc2VydmljZS5wcmlhaWQuY2giLCJhdWQiOiJodHRwczovL2hlYWx0aHNlcnZpY2UucHJpYWlkLmNoIiwiZXhwIjoxNjg1OTE4ODIwLCJuYmYiOjE2ODU5MTE2MjB9.zwQjbApj6wfcxEquHlWlZ6gA9AvbP54DAFtkvVaLZgY"
+    private var apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImthbWVyZ2VuaWVAZ21haWwuY29tIiwicm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxMjQyNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdmVyc2lvbiI6IjIwMCIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGltaXQiOiI5OTk5OTk5OTkiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXAiOiJQcmVtaXVtIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9sYW5ndWFnZSI6ImVuLWdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9leHBpcmF0aW9uIjoiMjA5OS0xMi0zMSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcHN0YXJ0IjoiMjAyMy0wNi0wNCIsImlzcyI6Imh0dHBzOi8vc2FuZGJveC1hdXRoc2VydmljZS5wcmlhaWQuY2giLCJhdWQiOiJodHRwczovL2hlYWx0aHNlcnZpY2UucHJpYWlkLmNoIiwiZXhwIjoxNjg2MDkxNDE1LCJuYmYiOjE2ODYwODQyMTV9.j8JgK64XqeRr9ql57r0HFDjZIfKLOZiQ3vVwCOr2lTE"
     private val language = "en-gb"
     private val format = "json"
 
+    // private val moshi = Moshi.Builder().build()
+    // private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    // private val moshiAdapter = moshi.adapter(SymptomCheckResult::class.java).failOnUnknown()
 
     /**
      * Performs a symptom check using the Apimedic API.
      *
      * @param symptomIds A list of symptom ids to check.
-     * @param age The age of the patient in years.
-     * @param sex The sex of the patient ("male" or "female").
+     * @param year_of_birth The year of birth of the patient.
+     * @param gender The sex of the patient ("male" or "female").
      * @return A [Result] object containing either a [SymptomCheckResult] object or a [FuelError] object.
      */
-    fun checkSymptoms(symptomIds: List<Int>, year_of_birth: Int?, gender: String?): Result<SymptomCheckResult, FuelError> {
-        val url = "$baseUrl/diagnosis?language=$language&gender=$gender&year_of_birth=$year_of_birth&symptoms=[${symptomIds.joinToString(",")}]&token=$apiKey"
+    fun checkSymptoms(symptomIds: List<Int>, year_of_birth: Int?, gender: String?): Result<String, FuelError> {
+        val url = "$baseUrl/diagnosis?format=$format&language=$language&gender=$gender&year_of_birth=$year_of_birth&symptoms=[${symptomIds.joinToString(",")}]&token=$apiKey"
         val (_, _, result) = url
             .httpGet()
             .responseString()
         return result.fold(
             { json ->
-                val symptomCheckResult = Json.decodeFromString<SymptomCheckResult>(json)
-                Result.success(symptomCheckResult)
+                //val symptomCheckResult = Json.decodeFromString<SymptomCheckResult>(json)
+                //val symptomCheckResult = moshiAdapter.fromJson(json)!!
+                val nameValues = mutableListOf<String>()
+                for (jsonElement: JsonElement in JsonParser().parse(json).asJsonArray) {
+                    val jsonObject: JsonObject = jsonElement.asJsonObject
+                    if (jsonObject.has("Issue")) {
+                        val nameValue: String = jsonObject.get("Issue").asJsonObject.get("Name").asString
+                        nameValues.add(nameValue)
+                    }
+                }
+                Result.success(nameValues.joinToString(separator = ", "))
             }, { error -> Result.error(error) }
         )
     }
@@ -80,10 +98,6 @@ class SymptomChecker {
 
     private data class Symptom(val id: Int, val name: String)
 
-    data class SymptomCheckResult(val issues: List<Issue>)
-
-    data class Issue(val name: String, val accuracy: Float, val ranking: Int)
-
 
     /**
      * A class representing the JSON response from the Apimedic API when retrieving an authentication token.
@@ -100,4 +114,9 @@ class SymptomChecker {
         val expiresIn: Int,
         val refreshToken: String
     )
+
+    @JsonClass(generateAdapter = true)
+    data class SymptomCheckResult(val issues: List<Issue>)
+
+    data class Issue(val id: Int, val name: String, val accuracy: Float, val ranking: Int)
 }

@@ -26,17 +26,8 @@ class SymptomsFragment : Fragment() {
 
     // Define the map of symptoms that the user can select from.
     private val symptomMap = mapOf(
-        1 to "Fever",
-        2 to "Cough",
-        3 to "Shortness of breath",
-        4 to "Fatigue",
-        5 to "Headache",
-        6 to "Muscle or body aches",
-        7 to "New loss of taste or smell",
-        8 to "Sore throat",
-        9 to "Congestion or runny nose",
-        10 to "Nausea or vomiting",
-        11 to "Diarrhea"
+        10 to "Abdominal pain",
+        238 to "Anxiety"
     )
 
     // Define the IDs of the symptoms that the user selects.
@@ -105,10 +96,10 @@ class SymptomsFragment : Fragment() {
                     withContext(Dispatchers.Main) {
                         when (result) {
                             is Result.Success -> {
-                                val issues = result.value.issues
+                                val issues = result.value
                                 if (issues.isNotEmpty()) {
-                                    val issueNames = issues.joinToString(", ") { it.name }
-                                    resultView.text = "Possible health issues: $issueNames"
+                                    //val issueNames = issues.joinToString(", ") { it.name }
+                                    resultView.text = "Possible health issues: $issues"
                                 } else {
                                     resultView.text = "No health issues found"
                                 }
