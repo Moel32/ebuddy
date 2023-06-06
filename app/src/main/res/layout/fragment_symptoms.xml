@@ -1,74 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".SymptomsFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select your symptoms:" />
-
-        <Spinner
-            android:id="@+id/symptom_spinner"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter your age:" />
+                <TextView
+                    android:layout_width="382dp"
+                    android:layout_height="45dp"
+                    android:text="Select your symptoms:" />
 
-        <EditText
-            android:id="@+id/age_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+                <Spinner
+                    android:id="@+id/symptom_spinner"
+                    android:layout_width="382dp"
+                    android:layout_height="116dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select your sex:" />
-
-        <RadioGroup
-            android:id="@+id/sex_radio_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/male_radio_button"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/search_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="Search" />
 
-                <RadioButton
-                    android:id="@+id/female_radio_button"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/reset_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="Reset" />
 
-        </RadioGroup>
+                <TextView
+                    android:id="@+id/resultTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="375dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="18sp" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Search" />
-
-        <Button
-            android:id="@+id/reset_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reset" />
-
-        <TextView
-            android:id="@+id/resultTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="18sp" />
-
-</LinearLayout>
+</FrameLayout>

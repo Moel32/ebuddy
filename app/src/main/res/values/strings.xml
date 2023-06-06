@@ -27,6 +27,11 @@
     <string name="featured_title">Featured</string>
     <string name="read_our_featured_articles">Read Our Featured Articles</string>
 
+    <string-array name="gender_options">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+
     <string-array name="symptoms">
         <item>Chest pain</item>
         <item>Fatigue</item>
