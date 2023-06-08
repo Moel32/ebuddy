@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.21'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.moel32.ebuddy"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         compileSdkPreview = "UpsideDownCake"
@@ -51,15 +52,18 @@ dependencies {
     implementation 'com.github.bassaer:chatmessageview:1.10.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
-    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation "com.github.kittinunf.fuel:fuel:2.3.1"
     implementation 'com.github.kittinunf.fuel:fuel-gson:2.3.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     implementation 'com.squareup.moshi:moshi:1.13.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+
+    implementation 'com.hover:android-sdk:1.7.3'
 }

@@ -6,18 +6,12 @@
     tools:ignore="HardcodedText">
 
     <item
-        android:id="@+id/floatingActionButtonHome"
         android:icon="@drawable/ic_home"
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/floatingActionButtonSymptoms"
-        android:icon="@drawable/nav_symptoms"
-        android:title="Symptoms"
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/nav_account"
+        android:title="@string/account"
         app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/floatingActionButtonShare"
-        android:icon="@drawable/ic_location"
-        android:title="GPS"
-        app:showAsAction="ifRoom" />
 </menu>

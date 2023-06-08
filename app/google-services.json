@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "896976347122",
+    "project_id": "ebuddy-b85a9",
+    "storage_bucket": "ebuddy-b85a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896976347122:android:59777bd5738dadf305d56b",
+        "android_client_info": {
+          "package_name": "com.moel32.ebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896976347122-tm2a0o9b5ic5ht6udqmk2n74o03dcbci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBahPLB0L56MRgXnTCiKYO308PYu5OBHRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896976347122-tm2a0o9b5ic5ht6udqmk2n74o03dcbci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

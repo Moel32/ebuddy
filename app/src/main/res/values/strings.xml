@@ -2,45 +2,27 @@
     <string name="app_name">EBuddy</string>
     <!-- Strings used for fragments for navigation -->
 
-    <string name="lorem_ipsum">Welcome to E BUddy</string>
     <string name="symptoms">Symptoms</string>
-    <string name="answer">Answer</string>
-    <string name="this_fragment_would_contain_the_symptoms">This fragment would contain the symptoms</string>
-    <string name="map">Map</string>
-    <string name="this_is_the_settings_fragment">This is the Settings Fragment</string>
     <string name="home">Home</string>
-    <string name="chat_fragment_label">Chat</string>
-    <string name="chat_bot">Chat</string>
-    <string name="open_nav">Open Navigation Drawer</string>
-    <string name="close_nav">Close Navigation Drawer</string>
-    <string name="library">Library</string>
     <string name="settings">Settings</string>
     <string name="share">Share</string>
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
     <string name="account">Account</string>
-    <string name="validate">Validate</string>
-    <string name="logo">Logo\n</string>
-    <string name="salutation">Hello MJ,</string>
-    <string name="welcome_message">Welcome to EBuddy. I can help you know more about your health.</string>
-    <string name="start_symptom_assessment">Start</string>
-    <string name="featured_title">Featured</string>
-    <string name="read_our_featured_articles">Read Our Featured Articles</string>
+    <string name="select_your_symptoms">Select your symptoms:</string>
+    <string name="search">Search</string>
+    <string name="reset">Reset</string>
+    <string name="ebuddy_icon">Ebuddy Icon</string>
+    <string name="version_number">Version Number\n</string>
+    <string name="v1_0_0">v1.0.0</string>
+    <string name="account_profile">Account Profile</string>
+    <string name="DrugCheck">Drug Check</string>
+    <string name="verify_drug">Verify Drug</string>
+    <string name="hands">hands</string>
+    <string name="my_local_pharm">My Local Pharm</string>
+    <string name="permissions_button_label">Permission</string>
+    <string name="action_button_label">"Check Airtime "</string>
+    <string name="mtn_logo">MTN Logo</string>
+    <string name="mtnorange_logo">MTNOrange Logo</string>
 
-    <string-array name="gender_options">
-        <item>male</item>
-        <item>female</item>
-    </string-array>
-
-    <string-array name="symptoms">
-        <item>Chest pain</item>
-        <item>Fatigue</item>
-        <item>Head ache</item>
-        <item>Cough</item>
-        <item>Fever</item>
-        <item>Stomach ache</item>
-        <item>Loss of taste or smell</item>
-        <item>Sinus pain from congestion</item>
-        <item>Thirst</item>
-    </string-array>
 </resources>

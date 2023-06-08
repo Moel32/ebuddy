@@ -2,28 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-    <fragment
-        android:id="@+id/navigation_symptoms"
-        android:name="com.moel32.ebuddy.MapFragment"
-        android:label="@string/symptoms"
-        tools:layout="@layout/fragment_map" >
-        <action
-            android:id="@+id/action_nav_library_to_nav_settings"
-            app:destination="@id/nav_settings" />
-        <action
-            android:id="@+id/action_nav_library_to_nav_share"
-            app:destination="@id/nav_share" />
-        <action
-            android:id="@+id/action_nav_library_to_nav_about"
-            app:destination="@id/nav_about" />
-    </fragment>
+    app:startDestination="@id/navigation_home">
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.moel32.ebuddy.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_nav_settings_to_nav_share"
+            app:destination="@id/nav_share" />
+        <action
+            android:id="@+id/action_nav_settings_to_nav_about"
+            app:destination="@id/nav_about" />
     </fragment>
     <fragment
         android:id="@+id/nav_share"
@@ -45,29 +35,17 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_account"
             app:destination="@id/navigation_account" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_chat"
-            app:destination="@id/navigation_chat" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_location"
-            app:destination="@id/navigation_location" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_chat"
-        android:name="com.moel32.ebuddy.ChatFragment"
-        android:label="@string/chat_bot"
-        tools:layout="@layout/fragment_chat" >
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_location"
-        android:name="com.moel32.ebuddy.MapFragment"
-        android:label="@string/map"
-        tools:layout="@layout/fragment_map" >
     </fragment>
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.moel32.ebuddy.AccountFragment"
         android:label="@string/account"
         tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_navigation_account_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_account_to_navigation_home2"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>

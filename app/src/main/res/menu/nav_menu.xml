@@ -8,11 +8,6 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/navigation_symptoms"
-            android:icon="@drawable/nav_symptoms"
-            android:title="@string/symptoms" />
-
-        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/settings"/>
@@ -32,7 +27,6 @@
 
         <menu>
             <item
-                android:id="@+id/nav_logout"
                 android:icon="@drawable/nav_logout"
                 android:title="@string/logout"/>
         </menu>

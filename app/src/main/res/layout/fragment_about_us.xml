@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutUsFragment">
+    android:orientation="vertical"
+    tools:context=".AboutUsFragment"
+    tools:ignore="UseCompoundDrawables">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="144dp"
+        android:contentDescription="@string/ebuddy_icon"
+        android:src="@drawable/ebuddyicon" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/about_us"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/lavender"/>
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/version_number"
+        android:text="@string/v1_0_0"
+        android:textAlignment="center"
+        android:textColor="#757575"
+        tools:ignore="TextContrastCheck" />
+
+</LinearLayout>

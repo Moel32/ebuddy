@@ -27,7 +27,11 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="d4dc6c363cd61162524ddc2ba074f3ef" />
+
+        <meta-data
+            android:name="com.hover.ApiKey"
+            android:value="d4dc6c363cd61162524ddc2ba074f3ed"/>
 
         <activity
             android:name=".MainActivity"
